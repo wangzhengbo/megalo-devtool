@@ -1,11 +1,11 @@
-const bridge = require('./bridge');
-const {
+import bridge from './bridge';
+import {
   resolveComponentName,
   resolveMPType,
   collectPageInfo,
   collectVMInfo,
   decycle,
-} = require('./utils');
+} from './utils';
 
 const rootVMCache = [];
 
@@ -46,7 +46,7 @@ bridge.on('refreshPages', (fn) => {
   });
 });
 
-module.exports = {
+export default {
   install(Vue, options) {
     versions = {
       vue: Vue.version,

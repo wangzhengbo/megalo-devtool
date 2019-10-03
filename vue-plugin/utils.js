@@ -1,4 +1,4 @@
-function collectPageInfo(vm) {
+export function collectPageInfo(vm) {
   let res = {};
   if (vm.$mp.page) {
     const page = vm.$mp.page;
@@ -13,7 +13,7 @@ function collectPageInfo(vm) {
   return res;
 }
 
-function collectVMInfo(vm) {
+export function collectVMInfo(vm) {
   const component = {
     name: '',
     _uid: vm._uid,
@@ -41,7 +41,7 @@ function collectVMInfo(vm) {
   return component;
 }
 
-function collectVMComputed(vm) {
+export function collectVMComputed(vm) {
   let res = {};
   if (vm._computedWatchers) {
     res = Object.keys(vm._computedWatchers).reduce((res, key) => {
@@ -52,7 +52,7 @@ function collectVMComputed(vm) {
   return res;
 }
 
-function collectVNode(vnode) {
+export function collectVNode(vnode) {
   let tag = resolveComponentName(vnode.tag);
   let data = vnode.data;
   let text = vnode.text;
@@ -69,11 +69,11 @@ function collectVNode(vnode) {
   };
 }
 
-function resolveComponentName(name) {
+export function resolveComponentName(name) {
   return (name || '').replace(/vue-component-\d+-/, '');
 }
 
-function resolveMPType(vm) {
+export function resolveMPType(vm) {
   if (!vm) {
     return 'unknown';
   } else if (vm.$mp.page && vm === vm.$root) {
@@ -82,7 +82,7 @@ function resolveMPType(vm) {
    return 'vm';
 }
 
-function decycle(val, maxDepth, ignoreKeys) {
+export function decycle(val, maxDepth, ignoreKeys) {
   ignoreKeys = ignoreKeys || [];
   const memo = [];
   function doDecycle (val, depth) {
@@ -125,13 +125,3 @@ function decycle(val, maxDepth, ignoreKeys) {
 
   return doDecycle(val, 0);
 }
-
-module.exports = {
-  resolveComponentName,
-  collectVMComputed,
-  collectVMInfo,
-  collectVNode,
-  resolveMPType,
-  collectPageInfo,
-  decycle
-};

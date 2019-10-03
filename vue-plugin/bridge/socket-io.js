@@ -1,4 +1,4 @@
-const io = require('weapp.socket.io');
+import io from 'weapp.socket.io';
 
 let socket;
 
@@ -10,7 +10,7 @@ function init(url) {
   });
 }
 
-module.exports = function getSocket(url) {
+export default function getSocket(url) {
   if (!socket) {
     init(url)
   }

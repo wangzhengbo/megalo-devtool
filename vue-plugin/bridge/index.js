@@ -1,5 +1,5 @@
-const getSocket = require('./socket-io');
-const bridge = module.exports = {};
+import getSocket from './socket-io';
+export const bridge = {};
 let host;
 let port;
 
