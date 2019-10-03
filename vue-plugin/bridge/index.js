@@ -1,5 +1,5 @@
 import getSocket from './socket-io';
-export const bridge = {};
+const bridge = {};
 let host;
 let port;
 
@@ -58,3 +58,5 @@ function sendWithSocketIO(data) {
 function send(data) {
   return useSocketIO ? sendWithSocketIO(data) : sendWithHttp(data);
 }
+
+export default bridge;
